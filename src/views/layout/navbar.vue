@@ -4,17 +4,15 @@
       <div
         class="logo"
       >
-        <img src="../../assets/logo.png">
+        <img
+          alt="logo"
+          src="../../assets/logo.png"
+        >
         <span>金币研究所</span>
       </div>
     </router-link>
 
     <ul class="nav-menus">
-      <li>
-        <router-link to="/futures">
-          永续合约
-        </router-link>
-      </li>
       <li>
         <router-link to="/spot">
           现货交易
@@ -34,7 +32,6 @@
         >
           <span
             class="el-dropdown-link"
-            style="margin-left: 20px;color: #d5d5d5;cursor: pointer;height: 60px;line-height: 60px;display: inline-block"
             v-if="$store.getters.getUserInfo.email.indexOf('@') <= 4"
           >
             {{ $store.getters.getUserInfo.email.substring(0, $store.getters.getUserInfo.email.indexOf('@')) }}
@@ -42,7 +39,6 @@
           </span>
           <span
             class="el-dropdown-link"
-            style="margin-left: 20px;color: #d5d5d5;cursor: pointer;height: 60px;line-height: 60px;display: inline-block"
             v-else
           >
             {{ $store.getters.getUserInfo.email.substring(0, 4) }}
@@ -133,13 +129,10 @@ export default {
 </script>
 
 <style scoped lang="scss">
-$--color-primary: #D8BE33;
-
 .navbar {
   height: 60px;
   line-height: 60px;
-  background: #171a21;
-  border-bottom: 1px solid #293448;
+  border-bottom: 1px solid var(--app-border-color);
 
   .logo {
     float: left;
@@ -151,11 +144,11 @@ $--color-primary: #D8BE33;
     }
 
     span {
-      color: $--color-primary;
       font-size: 18px;
       float: left;
       line-height: 60px;
       margin-left: 5px;
+      color: var(--app-text-color-light);
     }
   }
 
@@ -177,15 +170,15 @@ $--color-primary: #D8BE33;
         display: block;
         width: 70px;
         text-decoration: none;
-        color: #a6afc6;
+        color: var(--app-text-color);
       }
 
       a.active {
-        color: $--color-primary;
+        color: var(--el-color-primary);
       }
 
       a:hover {
-        color: $--color-primary;
+        color: var(--el-color-primary);
       }
     }
   }
@@ -207,15 +200,15 @@ $--color-primary: #D8BE33;
         display: block;
         width: 70px;
         text-decoration: none;
-        color: #828ea1;
+        color: var(--app-text-color);
       }
 
       a.active {
-        color: $--color-primary;
+        color: var(--el-color-primary);
       }
 
       a:hover {
-        color: $--color-primary;
+        color: var(--el-color-primary);
       }
 
       .profile {

@@ -1,0 +1,38 @@
+:root {
+  --app-bg-color: #171a21;
+  --app-text-color: #a6afc6;
+  --app-text-color-dark: #828ea1;
+  --app-text-color-light: #F5F5F5;
+  --app-border-color: #293448;
+}
+
+html, body, #app {
+  height: 100%;
+  font-size: 15px;
+  background: var(--app-bg-color);
+  color: var(--app-text-color);
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  overflow-y: scroll; //这是为了兼容ie8，不支持:root, vw。这个可以删掉
+}
+
+:root {
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+:root body {
+  position: absolute;
+}
+
+body {
+  width: 100vw;
+}
+
+// message
+.el-message {
+  z-index: 99999 !important;
+}

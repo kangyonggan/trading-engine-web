@@ -1,6 +1,6 @@
 <template>
   <div class="footer">
-    Gold coin © {{ DateTimeUtil.format(new Date().getTime(), 'yyyy') }}
+    Copyright © {{ DateTimeUtil.format(new Date().getTime(), 'yyyy') }} Trading engine . All rights reserved
   </div>
 </template>
 
@@ -13,8 +13,9 @@
   .footer {
     height: 60px;
     line-height: 60px;
-    background: #171a21;
-    border-top: 1px solid #293448;
+    background: var(--app-bg-color);
+    border-top: 1px solid var(--app-border-color);
+    color: var(--app-text-color-dark);
     text-align: center;
   }
 </style>

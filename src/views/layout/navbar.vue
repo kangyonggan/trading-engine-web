@@ -36,7 +36,7 @@
               <el-dropdown-item
                 command="/user/security"
               >
-                <el-icon><setting /></el-icon>账户安全
+                <el-icon><setting /></el-icon>安全设置
               </el-dropdown-item>
               <el-dropdown-item
                 command="/user/api"

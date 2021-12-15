@@ -27,10 +27,11 @@ export default {
   }
 
   .main-content {
-    width: calc(100% - 221px);
+    width: calc(100% - 261px);
     float: left;
-    min-height: calc(100vh - 122px);
+    min-height: calc(100vh - 142px);
     border-left: 1px solid var(--app-border-color);
+    padding: 10px 20px;
   }
 }
 </style>

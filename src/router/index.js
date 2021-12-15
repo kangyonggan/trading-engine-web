@@ -11,11 +11,17 @@ const routes = [
     children: [
       {
         path: '/',
-        component: Index
+        component: Index,
+        meta: {
+          title: '首页'
+        }
       },
       {
         path: 'login',
-        component: Login
+        component: Login,
+        meta: {
+          title: '登录'
+        }
       },
       {
         path: '/:catchAll(.*)',
@@ -37,7 +43,7 @@ const router = createRouter({
 
 router.beforeEach(async (to, from, next) => {
   if (to.meta && to.meta.title) {
-    document.title = to.meta.title
+    document.title = to.meta.title + ' - 交易引擎'
   }
 
   // 权限校验

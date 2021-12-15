@@ -113,6 +113,7 @@
 </template>
 
 <script>
+import Md5 from 'js-md5'
 import {Cellphone, Lock, CircleCheck} from '@element-plus/icons'
 
 export default {
@@ -197,6 +198,7 @@ export default {
         let params = Object.assign({}, this.params)
         if (this.params.loginType === 'BY_PWD') {
           params.verifyCode = undefined
+          params.password = Md5(params.password)
         }
         this.axios.post('/v1/user/login', params).then(data => {
           this.$store.commit('setUserInfo', data)

@@ -29,6 +29,27 @@
           <template #dropdown>
             <el-dropdown-menu>
               <el-dropdown-item
+                command="/user"
+              >
+                <el-icon><avatar /></el-icon>账户总览
+              </el-dropdown-item>
+              <el-dropdown-item
+                command="/user/security"
+              >
+                <el-icon><setting /></el-icon>账户安全
+              </el-dropdown-item>
+              <el-dropdown-item
+                command="/user/api"
+              >
+                <el-icon><set-up /></el-icon>API管理
+              </el-dropdown-item>
+              <el-dropdown-item
+                divided
+                command="/login"
+              >
+                <el-icon><Switch /></el-icon>切换账号
+              </el-dropdown-item>
+              <el-dropdown-item
                 command="logout"
               >
                 <el-icon><switch-button /></el-icon>退出登录
@@ -56,10 +77,10 @@
 </template>
 
 <script>
-import { ArrowDown, SwitchButton } from '@element-plus/icons'
+import { ArrowDown, SwitchButton, Switch, Setting, SetUp, Avatar } from '@element-plus/icons'
 
 export default {
-  components: { ArrowDown, SwitchButton },
+  components: { ArrowDown, SwitchButton, Switch, Setting, SetUp, Avatar },
   data() {
     return {
       currentUrl: '/'

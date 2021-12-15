@@ -7,7 +7,7 @@
           <component :is="Component" />
         </keep-alive>
       </router-view>
-      <div style="height: 60px" />
+      <div style="height: 60px;clear: both" />
     </div>
     <Footer />
   </div>

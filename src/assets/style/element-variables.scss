@@ -78,12 +78,14 @@
 .el-card {
   --el-card-border-radius: 4px;
   --el-card-padding: 20px;
+  --el-card-bg-color: rgba(30, 36, 50, .7);
+  --el-card-border-color: var(--app-border-color);
 }
 
 .el-card {
   border-radius: var(--el-card-border-radius);
-  border: 1px solid var(--app-border-color);
-  background-color: rgba(30, 36, 50, .7);
+  border: 1px solid var(--el-card-border-color);
+  background-color: var(--el-card-bg-color);
   overflow: hidden;
   color: var(--app-text-color-dark);
   transition: var(--el-transition-duration)
@@ -99,7 +101,7 @@
 
 .el-card__header {
   padding: calc(var(--el-card-padding) - 2px) var(--el-card-padding);
-  border-bottom: 1px solid var(--app-border-color);
+  border-bottom: 1px solid var(--el-card-border-color);
   box-sizing: border-box
 }
 

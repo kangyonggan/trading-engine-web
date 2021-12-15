@@ -1,9 +1,12 @@
 :root {
   --app-bg-color: #171a21;
   --app-text-color: #a6afc6;
+  --app-text-color-black: #000;
   --app-text-color-dark: #828ea1;
-  --app-text-color-light: #F5F5F5;
+  --app-text-color-light: #D5D5D5;
+  --app-text-color-white: #FFF;
   --app-border-color: #293448;
+  --app-border-color-light: #dcdfe6;
 }
 
 html, body, #app {
@@ -30,9 +33,4 @@ html {
 
 body {
   width: 100vw;
-}
-
-// message
-.el-message {
-  z-index: 99999 !important;
 }

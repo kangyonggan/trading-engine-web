@@ -26,5 +26,6 @@ export default {
 .wrapper {
   min-height: 100%;
   margin-bottom: -61px;
+  min-width: 1300px;
 }
 </style>

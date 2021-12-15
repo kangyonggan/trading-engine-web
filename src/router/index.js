@@ -3,7 +3,6 @@ import Layout from '../views/layout/layout.vue'
 import NotFound from '../views/404.vue'
 import Index from '../views/index.vue'
 import Login from '../views/login.vue'
-import Register from '../views/register.vue'
 
 const routes = [
   {
@@ -17,10 +16,6 @@ const routes = [
       {
         path: 'login',
         component: Login
-      },
-      {
-        path: 'register',
-        component: Register
       },
       {
         path: '/:catchAll(.*)',

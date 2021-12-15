@@ -1,0 +1,22 @@
+.el-button--default {
+  background: none;
+  color: var(--app-text-color);
+}
+
+.el-button--default:hover {
+  border-color: var(--app-border-color-light);
+  background: none;
+  color: var(--app-text-color);
+}
+
+.el-button--primary {
+  background: var(--el-color-primary);
+  color: var(--app-text-color-black) !important;
+  border-color: var(--app-border-color-light);
+}
+
+.el-button--primary:hover {
+  border-color: var(--app-border-color-light);
+  background: var(--el-color-primary);
+  color: var(--app-text-color-black);
+}

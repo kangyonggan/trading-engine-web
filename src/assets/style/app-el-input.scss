@@ -1,0 +1,8 @@
+.el-input {
+  --el-input-text-color: var(--app-text-color-light);
+  --el-input-bg-color: none;
+}
+
+.el-input-group__append, .el-input-group__prepend {
+  background: none;
+}

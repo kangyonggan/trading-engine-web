@@ -8,17 +8,9 @@
           alt="logo"
           src="../../assets/logo.png"
         >
-        <span>金币研究所</span>
+        <span>交易引擎</span>
       </div>
     </router-link>
-
-    <ul class="nav-menus">
-      <li>
-        <router-link to="/spot">
-          现货交易
-        </router-link>
-      </li>
-    </ul>
 
     <ul
       class="nav-user"
@@ -30,26 +22,16 @@
           class="profile"
           @command="handleCommand"
         >
-          <span
-            class="el-dropdown-link"
-            v-if="$store.getters.getUserInfo.email.indexOf('@') <= 4"
-          >
-            {{ $store.getters.getUserInfo.email.substring(0, $store.getters.getUserInfo.email.indexOf('@')) }}
-            <i class="el-icon-arrow-down el-icon--right" />
-          </span>
-          <span
-            class="el-dropdown-link"
-            v-else
-          >
-            {{ $store.getters.getUserInfo.email.substring(0, 4) }}
-            <i class="el-icon-arrow-down el-icon--right" />
+          <span>
+            {{ $store.getters.getUserInfo.uid }}
+            <el-icon><arrow-down /></el-icon>
           </span>
           <template #dropdown>
             <el-dropdown-menu>
               <el-dropdown-item
                 command="logout"
               >
-                <i class="el-icon-switch-button" />退出登录
+                <el-icon><switch-button /></el-icon>退出登录
               </el-dropdown-item>
             </el-dropdown-menu>
           </template>
@@ -63,14 +45,6 @@
     >
       <li>
         <router-link
-          to="/register"
-          :class="isActive('/register') ? 'active ' : ''"
-        >
-          注册
-        </router-link>
-      </li>
-      <li>
-        <router-link
           to="/login"
           :class="isActive('/login') ? 'active ' : ''"
         >
@@ -82,7 +56,10 @@
 </template>
 
 <script>
+import { ArrowDown, SwitchButton } from '@element-plus/icons'
+
 export default {
+  components: { ArrowDown, SwitchButton },
   data() {
     return {
       currentUrl: '/'

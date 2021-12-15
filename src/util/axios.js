@@ -4,11 +4,13 @@ import router from '../router'
 
 // 30s超时
 axios.defaults.timeout = 30000
+axios.defaults.baseURL = '/api/'
 
 // 请求拦截器
 axios.interceptors.request.use(function (config) {
   let userInfo = JSON.parse(localStorage.getItem('userInfo')) || {}
   config.headers['Authorization'] = userInfo.token
+  config.headers['Accept-Language'] = 'zh-CN'
   return config
 }, function (error) {
   return Promise.reject({

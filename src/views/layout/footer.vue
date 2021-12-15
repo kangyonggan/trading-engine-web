@@ -17,5 +17,6 @@
     border-top: 1px solid var(--app-border-color);
     color: var(--app-text-color-dark);
     text-align: center;
+    min-width: 1300px;
   }
 </style>

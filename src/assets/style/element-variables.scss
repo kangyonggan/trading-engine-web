@@ -14,5 +14,9 @@
   --el-color-primary-light-9: #ecf5ff;
 }
 
-@import "el-card";
-@import "el-input";
+@import "app-el-card";
+@import "app-el-input";
+@import "app-el-loading";
+@import "app-el-dropdown";
+@import "app-el-messagebox";
+@import "app-el-button";

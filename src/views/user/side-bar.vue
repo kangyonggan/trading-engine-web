@@ -73,6 +73,7 @@ export default {
     li.active {
       background: var(--app-bg-color-light);
       border-left-color: var(--el-color-primary);
+      color: var(--app-text-color-light);
     }
 
     li:hover {

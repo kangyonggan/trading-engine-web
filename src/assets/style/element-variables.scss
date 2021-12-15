@@ -74,3 +74,35 @@
   --el-transition-border: border-color var(--el-transition-duration-fast) var(--el-transition-function-ease-in-out-bezier);
   --el-transition-color: color var(--el-transition-duration-fast) var(--el-transition-function-ease-in-out-bezier)
 }
+
+.el-card {
+  --el-card-border-radius: 4px;
+  --el-card-padding: 20px;
+}
+
+.el-card {
+  border-radius: var(--el-card-border-radius);
+  border: 1px solid var(--app-border-color);
+  background-color: rgba(30, 36, 50, .7);
+  overflow: hidden;
+  color: var(--app-text-color-dark);
+  transition: var(--el-transition-duration)
+}
+
+.el-card.is-always-shadow {
+  box-shadow: var(--el-box-shadow-light)
+}
+
+.el-card.is-hover-shadow:focus, .el-card.is-hover-shadow:hover {
+  box-shadow: var(--el-box-shadow-light)
+}
+
+.el-card__header {
+  padding: calc(var(--el-card-padding) - 2px) var(--el-card-padding);
+  border-bottom: 1px solid var(--app-border-color);
+  box-sizing: border-box
+}
+
+.el-card__body {
+  padding: var(--el-card-padding)
+}

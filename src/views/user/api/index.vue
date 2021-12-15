@@ -29,7 +29,7 @@
           </el-button>
         </el-form-item>
       </div>
-      <div style="width: 100%;color: var(--app-text-color-dark)">
+      <div style="width: 100%;color: var(--app-text-color-dark);font-size: 14px;">
         <div>1. 每个账户最多可以创建 30 个 API Key。</div>
         <div>2. 请勿将您的 API Key 透露给任何人，以免造成资产损失。建议为API Key绑定IP，以提高您的账户安全性。</div>
         <div>3. 请注意，将API Key绑定在第三方平台，可能有安全隐患，请您谨慎操作。</div>

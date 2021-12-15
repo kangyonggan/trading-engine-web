@@ -14,11 +14,5 @@
   --el-color-primary-light-9: #ecf5ff;
 }
 
-.el-card {
-  --el-card-bg-color: rgba(30, 36, 50, .7);
-  --el-card-border-color: var(--app-border-color);
-}
-
-.el-card {
-  color: var(--app-text-color-dark);
-}
+@import "el-card";
+@import "el-input";

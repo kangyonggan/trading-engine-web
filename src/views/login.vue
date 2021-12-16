@@ -162,7 +162,7 @@ export default {
           type: 'LOGIN',
           email: that.params.email
         }).then(() => {
-          that.startTimer()
+          that.startTimer(60)
           that.$success('发送成功')
         }).catch(res => {
           that.codeText = '获取验证码'

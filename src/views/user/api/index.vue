@@ -166,7 +166,20 @@ export default {
      * 删除API
      */
     deleteApi(row) {
-      console.log(row)
+      this.$confirm('确定删除API吗？', '提示', {
+        confirmButtonText: '确定',
+        cancelButtonText: '取消',
+        type: 'warning'
+      }).then(() => {
+        this.loading = true
+        this.axios.delete('/v1/user/permission?id=' + row.id).finally(() => {
+          this.loadPermissions()
+        }).catch(res => {
+          this.$error(res.msg)
+        }).finally(() => {
+          this.loading = false
+        })
+      })
     },
     /**
      * 创建Api

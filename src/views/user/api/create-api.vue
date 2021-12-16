@@ -20,8 +20,11 @@
         :placeholder="'请输入邮箱' + getEmailDisp() + '的验证码'"
       >
         <template #append>
-          <span style="cursor: pointer">
-            获取验证码
+          <span
+            style="cursor: pointer"
+            @click="sendCode"
+          >
+            {{ codeText }}
           </span>
         </template>
       </el-input>
@@ -37,6 +40,9 @@ export default {
   components: {BaseModal},
   data() {
     return {
+      loading: false,
+      codeText: '获取验证码',
+      second: 60,
       params: {
         emailCode: '',
         remark: ''
@@ -49,6 +55,39 @@ export default {
     }
   },
   methods: {
+    sendCode() {
+      if (this.second !== 60 || this.loading || this.codeText !== '获取验证码') {
+        return
+      }
+      this.loading = true
+      this.codeText = '发送中...'
+      this.axios.post('/v1/email/sendCode', {
+        type: 'API',
+        email: this.$store.getters.getUserInfo.email
+      }).then(() => {
+        this.startTimer(60)
+        this.$success('发送成功')
+      }).catch(res => {
+        this.codeText = '获取验证码'
+        this.$error(res.msg)
+      }).finally(() => {
+        this.loading = false
+      })
+    },
+    startTimer(sec) {
+      if (sec) {
+        this.second = sec
+      }
+      const timer = setInterval(() => {
+        this.codeText = this.second + 's'
+        this.second--
+        if (this.second === 0) {
+          this.second = 60
+          this.codeText = '获取验证码'
+          clearInterval(timer)
+        }
+      }, 1000)
+    },
     getEmailDisp() {
       let email = this.$store.getters.getUserInfo.email
       let emailName = email.substring(0, email.indexOf('@'))

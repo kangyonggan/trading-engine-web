@@ -17,13 +17,15 @@
           prop="remark"
           label="给API密钥一个标签"
         >
-          <el-input v-model="params.remark" />
+          <el-input
+            v-model="params.remark"
+            placeholder="API标签"
+          />
         </el-form-item>
         <el-form-item style="float: left;margin-top: 40px;margin-left: 10px;">
           <el-button
             type="primary"
             @click="createApi"
-            v-loading="loading"
           >
             创建API
           </el-button>
@@ -37,6 +39,17 @@
       </div>
     </el-form>
 
+    <el-alert
+      v-show="secretKey"
+      style="margin-top: 20px;width: calc(100% - 10px)"
+      type="success"
+      :title="'ApiKey：' + apiKey"
+      :description="'SecretKey：' + secretKey"
+      show-icon
+      effect="dark"
+      @close="secretKey = ''"
+    />
+
     <div
       class="page-header"
       style="margin-top: 30px;"
@@ -44,6 +57,7 @@
       API列表
     </div>
     <el-table
+      v-loading="loading"
       :data="permissions"
     >
       <el-table-column
@@ -51,10 +65,10 @@
         prop="apiKey"
       >
         <template #default="scope">
+          {{ scope.row.apiKey.substring(0, 4) }}****{{ scope.row.apiKey.substring(59, 63) }}
           <el-icon style="cursor: pointer;color: var(--el-color-primary);font-size: 16px;">
             <document-copy />
           </el-icon>
-          {{ scope.row.apiKey.substring(0, 4) }}****{{ scope.row.apiKey.substring(59, 63) }}
         </template>
       </el-table-column>
       <el-table-column
@@ -107,14 +121,20 @@
         </template>
       </el-table-column>
     </el-table>
+
+    <create-api
+      ref="create-api"
+      @success="success"
+    />
   </div>
 </template>
 
 <script>
 import { DocumentCopy, Delete, Edit, Unlock } from '@element-plus/icons'
+import CreateApi from './create-api'
 
 export default {
-  components: { DocumentCopy, Delete, Edit, Unlock },
+  components: { DocumentCopy, Delete, Edit, Unlock, CreateApi },
   data() {
     return {
       loading: false,
@@ -126,10 +146,22 @@ export default {
           {required: true, message: '请输入标签'}
         ],
       },
-      permissions: []
+      permissions: [],
+      apiKey: '',
+      secretKey: ''
     }
   },
   methods: {
+    /**
+     * 创建Api成功
+     */
+    success(data) {
+      this.apiKey = data.apiKey
+      this.secretKey = data.secretKey
+      this.loadPermissions()
+      this.$success('API创建成功')
+      this.params.remark = ''
+    },
     /**
      * 删除API
      */
@@ -144,27 +176,20 @@ export default {
         if (!valid) {
           return
         }
-        this.loading = true;
-        let params = Object.assign({}, this.params)
-        this.axios.post('/v1/user/permission', params).then(() => {
-          this.params.remark = ''
-          this.$success('API创建成功')
-          this.loadPermissions()
-        }).catch(res => {
-          this.$error(res.msg)
-        }).finally(() => {
-          this.loading = false
-        })
+        this.$refs['create-api'].show(this.params.remark)
       })
     },
     /**
      * 加载Api列表
      */
     loadPermissions() {
+      this.loading = true
       this.axios.get('/v1/user/permission').then(data => {
         this.permissions = data
       }).catch(res => {
         this.$error(res.msg)
+      }).finally(() => {
+        this.loading = false
       })
     }
   },

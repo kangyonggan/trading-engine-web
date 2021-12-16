@@ -6,3 +6,7 @@
 .el-input-group__append, .el-input-group__prepend {
   background: none;
 }
+
+.el-input__inner::placeholder {
+  color: var(--app-text-color-dark);
+}

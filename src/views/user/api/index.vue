@@ -20,6 +20,7 @@
           <el-input
             v-model="params.remark"
             placeholder="API标签"
+            clearable
           />
         </el-form-item>
         <el-form-item style="float: left;margin-top: 40px;margin-left: 10px;">
@@ -35,7 +36,6 @@
         <div>1. 每个账户最多可以创建 30 个 API Key。</div>
         <div>2. 请勿将您的 API Key 透露给任何人，以免造成资产损失。建议为API Key绑定IP，以提高您的账户安全性。</div>
         <div>3. 请注意，将API Key绑定在第三方平台，可能有安全隐患，请您谨慎操作。</div>
-        <div>4. 请在创建 API 之前完成 谷歌认证。</div>
       </div>
     </el-form>
 
@@ -66,9 +66,17 @@
       >
         <template #default="scope">
           {{ scope.row.apiKey.substring(0, 4) }}****{{ scope.row.apiKey.substring(59, 63) }}
-          <el-icon style="cursor: pointer;color: var(--el-color-primary);font-size: 16px;">
+          <el-icon
+            style="cursor: pointer;color: var(--el-color-primary);font-size: 16px;"
+            @click="copy('copy-apiKey-' + scope.row.id)"
+          >
             <document-copy />
           </el-icon>
+          <input
+            style="position: absolute;left: -99999px;top:0;"
+            :id="'copy-apiKey-' + scope.row.id"
+            :value="scope.row.apiKey"
+          >
         </template>
       </el-table-column>
       <el-table-column
@@ -76,10 +84,29 @@
         prop="secretKey"
       >
         <template #default="scope">
-          {{ scope.row.secretKey }}
-          <el-icon style="cursor: pointer;color: var(--el-color-primary);font-size: 16px;">
-            <unlock />
-          </el-icon>
+          <div v-if="!secretKeyMap[scope.row.id]">
+            {{ scope.row.secretKey }}
+            <el-icon
+              style="cursor: pointer;color: var(--el-color-primary);font-size: 16px;"
+              @click="showSecretKey(scope.row.id)"
+            >
+              <unlock />
+            </el-icon>
+          </div>
+          <div v-else>
+            {{ secretKeyMap[scope.row.id].substring(0, 4) }}****{{ secretKeyMap[scope.row.id].substring(59, 63) }}
+            <el-icon
+              style="cursor: pointer;color: var(--el-color-primary);font-size: 16px;"
+              @click="copy('copy-secretKey-' + scope.row.id)"
+            >
+              <document-copy />
+            </el-icon>
+            <input
+              style="position: absolute;left: -99999px;top:0;"
+              :id="'copy-secretKey-' + scope.row.id"
+              :value="secretKeyMap[scope.row.id]"
+            >
+          </div>
         </template>
       </el-table-column>
       <el-table-column
@@ -108,7 +135,7 @@
         <template #default="scope">
           <span
             style="cursor: pointer;color: var(--el-color-primary);font-size: 16px;"
-            @click="deleteApi(scope.row)"
+            @click="editApi(scope.row)"
           >
             <el-icon><edit /></el-icon>
           </span>
@@ -126,15 +153,27 @@
       ref="create-api"
       @success="success"
     />
+
+    <edit-api
+      ref="edit-api"
+      @success="loadPermissions"
+    />
+
+    <show-secret
+      ref="show-secret"
+      @success="showSecretKeySuccess"
+    />
   </div>
 </template>
 
 <script>
-import { DocumentCopy, Delete, Edit, Unlock } from '@element-plus/icons'
+import {DocumentCopy, Delete, Edit, Unlock} from '@element-plus/icons'
 import CreateApi from './create-api'
+import EditApi from './edit-api'
+import ShowSecret from './show-secret'
 
 export default {
-  components: { DocumentCopy, Delete, Edit, Unlock, CreateApi },
+  components: {DocumentCopy, Delete, Edit, Unlock, CreateApi, EditApi, ShowSecret},
   data() {
     return {
       loading: false,
@@ -148,10 +187,29 @@ export default {
       },
       permissions: [],
       apiKey: '',
-      secretKey: ''
+      secretKey: '',
+      secretKeyMap: {}
     }
   },
   methods: {
+    /**
+     * 复制
+     */
+    copy(key) {
+      const target = document.getElementById(key)
+      target.select()
+      document.execCommand("copy")
+      this.$success('复制成功')
+    },
+    /**
+     * 查看SecretKey
+     */
+    showSecretKey(id) {
+      this.$refs['show-secret'].show(id)
+    },
+    showSecretKeySuccess(data) {
+      this.secretKeyMap[data.id] = data.secretKey
+    },
     /**
      * 创建Api成功
      */
@@ -180,6 +238,12 @@ export default {
           this.loading = false
         })
       })
+    },
+    /**
+     * 编辑API
+     */
+    editApi(row) {
+      this.$refs['edit-api'].show(row)
     },
     /**
      * 创建Api

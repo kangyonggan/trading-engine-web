@@ -46,6 +46,11 @@ export default {
       type: String,
       default: ''
     },
+    method: {
+      required: false,
+      type: String,
+      default: 'POST'
+    },
     params: {
       required: false,
       type: Object,
@@ -151,7 +156,11 @@ export default {
         params = this.params
       }
       this.loading = true;
-      this.axios.post(this.url, params).then(data => {
+      this.axios.request({
+        url: this.url,
+        method: this.method,
+        data: params
+      }).then(data => {
         this.close()
         this.$emit('success', data)
       }).catch(res => {

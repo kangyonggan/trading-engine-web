@@ -2,7 +2,8 @@
   <base-modal
     ref="modal"
     title="安全验证"
-    url="/v1/user/permission"
+    :url="'/v1/user/permission/' + id"
+    method="GET"
     :params="params"
     :rules="rules"
     @success="$emit('success', $event)"
@@ -15,9 +16,9 @@
       label="邮箱验证码"
     >
       <el-input
+        clearable
         v-model="params.emailCode"
         :placeholder="'请输入邮箱' + getEmailDisp() + '的验证码'"
-        clearable
       >
         <template #append>
           <span
@@ -43,9 +44,9 @@ export default {
       loading: false,
       codeText: '获取验证码',
       second: 60,
+      id: '',
       params: {
         emailCode: '',
-        remark: ''
       },
       rules: {
         emailCode: [
@@ -94,8 +95,8 @@ export default {
       email = (emailName.length >= 2 ? emailName.substring(0, 2) : emailName) + '**@****' + email.substring(email.lastIndexOf('.'))
       return email
     },
-    show(remark) {
-      this.params.remark = remark
+    show(id) {
+      this.id = id
       this.params.emailCode = ''
       this.$refs.modal.show()
     },

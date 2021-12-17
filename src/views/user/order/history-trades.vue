@@ -8,18 +8,18 @@
 export default {
   data() {
     return {
-      historyOrders: [],
+      historyTrades: [],
       total: 0
     }
   },
   methods: {
     /**
-     * 历史委托
+     * 历史成交
      */
-    loadHistoryOrders() {
+    loadHistoryTrades() {
       this.loading = true
-      this.axios.get('/v1/user/historyOrders').then(data => {
-        this.historyOrders = data.list
+      this.axios.get('/v1/user/historyTrades').then(data => {
+        this.historyTrades = data.list
         this.total = data.total
       }).catch(res => {
         this.$error(res.msg)

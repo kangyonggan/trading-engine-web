@@ -7,7 +7,10 @@
 <script>
 export default {
   data() {
-    return {}
+    return {
+      openOrders: [],
+      total: 0
+    }
   },
   methods: {
     /**
@@ -16,7 +19,8 @@ export default {
     loadOpenOrders() {
       this.loading = true
       this.axios.get('/v1/user/openOrders').then(data => {
-        this.openOrders = data
+        this.openOrders = data.list
+        this.total = data.total
       }).catch(res => {
         this.$error(res.msg)
       }).finally(() => {

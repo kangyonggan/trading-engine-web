@@ -6,7 +6,7 @@
       </el-icon>
       现货订单
     </div>
-    
+
     <el-tabs
       v-model="activeTab"
       @tab-click="changeActiveTab"
@@ -15,13 +15,13 @@
         label="当前委托"
         name="0"
       >
-        <open-orders />
+        <open-orders ref="open-orders" />
       </el-tab-pane>
       <el-tab-pane
         label="历史委托"
         name="1"
       >
-        <history-orders />
+        <history-orders ref="history-orders" />
       </el-tab-pane>
       <el-tab-pane
         label="历史成交"
@@ -42,16 +42,23 @@ export default {
   components: {Calendar, OpenOrders, HistoryOrders},
   data() {
     return {
-      activeTab: '0',
+      activeTab: localStorage.getItem('activeOrderTab') || '0',
     }
   },
   methods: {
     changeActiveTab(activeTab) {
-      console.log(activeTab)
+      localStorage.setItem('activeOrderTab', activeTab)
+      if (activeTab === '0') {
+        this.$refs['open-orders'].loadOpenOrders()
+      } else if (activeTab === '1') {
+        this.$refs['history-orders'].loadHistoryOrders()
+      } else if (activeTab === '2') {
+        this.$refs['history-trades'].loadHistoryTrades()
+      }
     }
   },
   activated() {
-
+    this.changeActiveTab(this.activeTab)
   }
 }
 </script>

@@ -11,7 +11,7 @@
       ref="form"
       :model="params"
       :rules="rules"
-      label-width="120px"
+      label-width="110px"
     >
       <el-form-item
         label="邮箱验证码"
@@ -176,7 +176,7 @@ export default {
 @import "../user.scss";
 
 .el-form {
-  width: 800px;
-  margin: 0 auto;
+  width: 700px;
+  margin: 80px auto 0 auto;
 }
 </style>

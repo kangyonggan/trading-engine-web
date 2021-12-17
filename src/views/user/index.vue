@@ -114,8 +114,5 @@ export default {
 </script>
 
 <style scoped lang="scss">
-.page-header {
-  font-size: 28px;
-  margin-bottom: 20px;
-}
+@import "./user.scss";
 </style>

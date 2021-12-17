@@ -9,6 +9,10 @@
   color: var(--app-text-color);
 }
 
+.el-button--default:focus {
+  background: none;
+}
+
 .el-button--primary {
   background: var(--el-color-primary);
   color: var(--app-text-color-black) !important;

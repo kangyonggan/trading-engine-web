@@ -13,7 +13,7 @@
         @click="$router.push('/user/security')"
       >
         <el-icon><lock /></el-icon>
-        安全设置
+        登录密码
       </li>
       <li
         :class="{active: isActive('/user/api')}"

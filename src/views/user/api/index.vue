@@ -219,7 +219,7 @@ export default {
       this.secretKey = data.secretKey
       this.loadPermissions()
       this.$success('API创建成功')
-      this.params.remark = ''
+      this.$refs.form.resetFields()
     },
     /**
      * 删除API

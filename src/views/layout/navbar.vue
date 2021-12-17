@@ -36,7 +36,7 @@
               <el-dropdown-item
                 command="/user/security"
               >
-                <el-icon><lock /></el-icon>安全设置
+                <el-icon><lock /></el-icon>登录密码
               </el-dropdown-item>
               <el-dropdown-item
                 command="/user/api"

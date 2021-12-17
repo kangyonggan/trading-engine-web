@@ -99,7 +99,7 @@ export default {
         cancelButtonText: '取消',
         type: 'warning'
       }).then(() => {
-        this.axios.get('/v1/user/logout').finally(() => {
+        this.axios.delete('/v1/user/logout').finally(() => {
           this.$store.commit('setUserInfo', {})
           this.$router.push({
             path: '/login'

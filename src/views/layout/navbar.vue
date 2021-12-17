@@ -31,12 +31,12 @@
               <el-dropdown-item
                 command="/user"
               >
-                <el-icon><avatar /></el-icon>账户总览
+                <el-icon><coin /></el-icon>钱包总览
               </el-dropdown-item>
               <el-dropdown-item
                 command="/user/security"
               >
-                <el-icon><setting /></el-icon>安全设置
+                <el-icon><lock /></el-icon>安全设置
               </el-dropdown-item>
               <el-dropdown-item
                 command="/user/api"
@@ -77,10 +77,10 @@
 </template>
 
 <script>
-import { ArrowDown, SwitchButton, Switch, Setting, SetUp, Avatar } from '@element-plus/icons'
+import { ArrowDown, SwitchButton, Switch, Lock, SetUp, Coin } from '@element-plus/icons'
 
 export default {
-  components: { ArrowDown, SwitchButton, Switch, Setting, SetUp, Avatar },
+  components: { ArrowDown, SwitchButton, Switch, Lock, SetUp, Coin },
   data() {
     return {
       currentUrl: '/'

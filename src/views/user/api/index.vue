@@ -1,6 +1,7 @@
 <template>
   <div>
     <div class="page-header">
+      <el-icon><set-up /></el-icon>
       API管理
     </div>
 
@@ -167,13 +168,13 @@
 </template>
 
 <script>
-import {DocumentCopy, Delete, Edit, Unlock} from '@element-plus/icons'
+import {DocumentCopy, Delete, Edit, Unlock, SetUp} from '@element-plus/icons'
 import CreateApi from './create-api'
 import EditApi from './edit-api'
 import ShowSecret from './show-secret'
 
 export default {
-  components: {DocumentCopy, Delete, Edit, Unlock, CreateApi, EditApi, ShowSecret},
+  components: {DocumentCopy, Delete, Edit, Unlock, SetUp, CreateApi, EditApi, ShowSecret},
   data() {
     return {
       loading: false,

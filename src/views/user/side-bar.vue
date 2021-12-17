@@ -5,14 +5,14 @@
         :class="{active: isActive('/user')}"
         @click="$router.push('/user')"
       >
-        <el-icon><avatar /></el-icon>
+        <el-icon><coin /></el-icon>
         账户总览
       </li>
       <li
         :class="{active: isActive('/user/security')}"
         @click="$router.push('/user/security')"
       >
-        <el-icon><setting /></el-icon>
+        <el-icon><lock /></el-icon>
         安全设置
       </li>
       <li
@@ -27,10 +27,10 @@
 </template>
 
 <script>
-import { Setting, SetUp, Avatar } from '@element-plus/icons'
+import { Lock, SetUp, Coin } from '@element-plus/icons'
 
 export default {
-  components: {Setting, SetUp, Avatar},
+  components: {Lock, SetUp, Coin},
   data() {
     return {
       currentUrl: ''

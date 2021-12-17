@@ -7,6 +7,7 @@ import UserLayout from '../views/user/layout.vue'
 import UserIndex from '../views/user/index.vue'
 import UserSecurity from '../views/user/security/index.vue'
 import UserApi from '../views/user/api/index.vue'
+import UserOrder from '../views/user/order/index.vue'
 
 const routes = [
   {
@@ -52,6 +53,14 @@ const routes = [
             component: UserApi,
             meta: {
               title: 'API管理',
+              authorization: true
+            }
+          },
+          {
+            path: 'order',
+            component: UserOrder,
+            meta: {
+              title: '现货订单',
               authorization: true
             }
           },

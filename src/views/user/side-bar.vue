@@ -16,6 +16,13 @@
         登录密码
       </li>
       <li
+        :class="{active: isActive('/user/order')}"
+        @click="$router.push('/user/order')"
+      >
+        <el-icon><calendar /></el-icon>
+        现货订单
+      </li>
+      <li
         :class="{active: isActive('/user/api')}"
         @click="$router.push('/user/api')"
       >
@@ -27,10 +34,10 @@
 </template>
 
 <script>
-import { Lock, SetUp, Coin } from '@element-plus/icons'
+import { Lock, SetUp, Coin, Calendar } from '@element-plus/icons'
 
 export default {
-  components: {Lock, SetUp, Coin},
+  components: {Lock, SetUp, Coin, Calendar},
   data() {
     return {
       currentUrl: ''

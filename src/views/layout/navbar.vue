@@ -39,6 +39,11 @@
                 <el-icon><lock /></el-icon>登录密码
               </el-dropdown-item>
               <el-dropdown-item
+                command="/user/order"
+              >
+                <el-icon><calendar /></el-icon>现货订单
+              </el-dropdown-item>
+              <el-dropdown-item
                 command="/user/api"
               >
                 <el-icon><set-up /></el-icon>API管理
@@ -77,10 +82,10 @@
 </template>
 
 <script>
-import { ArrowDown, SwitchButton, Switch, Lock, SetUp, Coin } from '@element-plus/icons'
+import { ArrowDown, SwitchButton, Switch, Lock, SetUp, Coin, Calendar } from '@element-plus/icons'
 
 export default {
-  components: { ArrowDown, SwitchButton, Switch, Lock, SetUp, Coin },
+  components: { ArrowDown, SwitchButton, Switch, Lock, SetUp, Coin, Calendar },
   data() {
     return {
       currentUrl: '/'

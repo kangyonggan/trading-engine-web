@@ -39,7 +39,7 @@ export default {
   methods: {
     isActive: function (url) {
       if (url === '/user') {
-        return this.currentUrl === '/user';
+        return this.currentUrl === '/user' || this.currentUrl === '/user/accountLog';
       }
       return this.currentUrl.startsWith(url);
     },

@@ -5,6 +5,7 @@ import Index from '../views/index.vue'
 import Login from '../views/login.vue'
 import UserLayout from '../views/user/layout.vue'
 import UserIndex from '../views/user/index.vue'
+import UserAccountLog from '../views/user/account-log.vue'
 import UserSecurity from '../views/user/security/index.vue'
 import UserApi from '../views/user/api/index.vue'
 
@@ -36,6 +37,14 @@ const routes = [
             component: UserIndex,
             meta: {
               title: '账户总览',
+              authorization: true
+            }
+          },
+          {
+            path: 'accountLog',
+            component: UserAccountLog,
+            meta: {
+              title: '账户流水',
               authorization: true
             }
           },

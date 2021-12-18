@@ -53,15 +53,9 @@
         <template #default="scope">
           <el-button
             type="text"
-            @click="trade(scope.row)"
+            @click="$router.push('/user/accountLog?accountType=spot&currency=' + scope.row.currency)"
           >
             流水
-          </el-button>
-          <el-button
-            type="text"
-            @click="trade(scope.row)"
-          >
-            交易
           </el-button>
         </template>
       </el-table-column>
@@ -96,10 +90,6 @@ export default {
         res = this.allAccounts
       }
       this.accounts = res
-    },
-    trade(row) {
-      console.log(row)
-      this.$warning('敬请期待')
     },
     loadAccounts() {
       this.loading = true

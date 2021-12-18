@@ -1,0 +1,18 @@
+.el-pagination {
+  button:disabled {
+    background-color: var(--app-bg-color);
+  }
+
+  .el-pager li, .btn-next, .btn-prev {
+    background-color: var(--app-bg-color);
+    color: var(--app-text-color)
+  }
+
+  .el-pager li {
+    color: var(--app-text-color)
+  }
+
+  .el-pager li.active {
+    color: var(--el-color-primary)
+  }
+}

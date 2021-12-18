@@ -23,7 +23,7 @@
           @command="handleCommand"
         >
           <span>
-            {{ $store.getters.getUserInfo.uid }}
+            {{ $store.getters.getUserInfo.email.substring(0, $store.getters.getUserInfo.email.indexOf('@')) }}
             <el-icon><arrow-down /></el-icon>
           </span>
           <template #dropdown>

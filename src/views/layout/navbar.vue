@@ -14,7 +14,7 @@
 
     <ul
       class="nav-user"
-      v-if="$store.getters.getUserInfo.id"
+      v-if="$store.getters.getUserInfo.uid"
     >
       <li>
         <el-dropdown
@@ -36,12 +36,7 @@
               <el-dropdown-item
                 command="/user/security"
               >
-                <el-icon><lock /></el-icon>登录密码
-              </el-dropdown-item>
-              <el-dropdown-item
-                command="/user/order"
-              >
-                <el-icon><calendar /></el-icon>现货订单
+                <el-icon><lock /></el-icon>账户安全
               </el-dropdown-item>
               <el-dropdown-item
                 command="/user/api"
@@ -82,10 +77,10 @@
 </template>
 
 <script>
-import { ArrowDown, SwitchButton, Switch, Lock, SetUp, Coin, Calendar } from '@element-plus/icons'
+import { ArrowDown, SwitchButton, Switch, Lock, SetUp, Coin } from '@element-plus/icons'
 
 export default {
-  components: { ArrowDown, SwitchButton, Switch, Lock, SetUp, Coin, Calendar },
+  components: { ArrowDown, SwitchButton, Switch, Lock, SetUp, Coin },
   data() {
     return {
       currentUrl: '/'

@@ -55,6 +55,12 @@
             type="text"
             @click="trade(scope.row)"
           >
+            流水
+          </el-button>
+          <el-button
+            type="text"
+            @click="trade(scope.row)"
+          >
             交易
           </el-button>
         </template>

@@ -218,20 +218,17 @@
           测试服务器连通性
         </div>
         <p>
-          测试能否联通。
-        </p>
-        <p>
           地址：
-          <code>
-            <pre>GET /v1/ping</pre>
-          </code>
         </p>
+        <ul>
+          <li>GET /v1/ping</li>
+        </ul>
         <p>
           入参：
-          <code>
-            <pre>无</pre>
-          </code>
         </p>
+        <ul>
+          <li>无</li>
+        </ul>
         <p>
           出参：
           <code>
@@ -250,16 +247,16 @@
         </div>
         <p>
           地址：
-          <code>
-            <pre>GET /v1/time</pre>
-          </code>
         </p>
+        <ul>
+          <li>GET /v1/time</li>
+        </ul>
         <p>
           入参：
-          <code>
-            <pre>无</pre>
-          </code>
         </p>
+        <ul>
+          <li>无</li>
+        </ul>
         <p>
           出参：
           <code>
@@ -278,24 +275,33 @@
         </div>
         <p>
           地址：
-          <code>
-            <pre>GET /v1/time</pre>
-          </code>
         </p>
+        <ul>
+          <li>GET /v1/symbol</li>
+        </ul>
         <p>
           入参：
-          <code>
-            <pre>无</pre>
-          </code>
         </p>
+        <ul>
+          <li>无</li>
+        </ul>
         <p>
           出参：
-          <code>
-            <pre>{
-  "serverTime": 1499827319559 // 当前的系统时间
-}</pre>
-          </code>
         </p>
+        <ul>
+          <li>symbol（String）：交易对</li>
+          <li>takerFeeRate（BigDecimal）：taker手续费率</li>
+          <li>makerFeeRate（BigDecimal）：maker手续费率</li>
+          <li>priceScale（Integer）：价格精度</li>
+          <li>quantityScale（Integer）：数量精度</li>
+          <li>sort（Integer）：排序</li>
+          <li>price（BigDecimal）：最新价</li>
+          <li>rose（BigDecimal）：24小时涨跌幅</li>
+        </ul>
+        <code>
+          <pre>xxx
+xxx</pre>
+        </code>
       </el-card>
     </div>
   </div>
@@ -368,7 +374,6 @@
         display: block;
 
         pre {
-          display: inline-block;
           background-color: var(--app-bg-color);
           padding: 5px 10px;
           border-radius: 4px;

@@ -28,31 +28,31 @@
         <template #title>
           <span>行情接口</span>
         </template>
-        <el-menu-item index="2-1">
-          测试服务器连通性 PING
+        <el-menu-item index="#2-1">
+          测试服务器连通性
         </el-menu-item>
-        <el-menu-item index="2-2">
+        <el-menu-item index="#2-2">
           获取服务器时间
         </el-menu-item>
-        <el-menu-item index="2-3">
-          获取交易规则和交易对
+        <el-menu-item index="#2-3">
+          获取交易对
         </el-menu-item>
-        <el-menu-item index="2-4">
+        <el-menu-item index="#2-4">
           深度信息
         </el-menu-item>
-        <el-menu-item index="2-5">
+        <el-menu-item index="#2-5">
           近期成交
         </el-menu-item>
-        <el-menu-item index="2-6">
+        <el-menu-item index="#2-6">
           查询历史成交
         </el-menu-item>
-        <el-menu-item index="2-7">
+        <el-menu-item index="#2-7">
           近期成交(归集)
         </el-menu-item>
-        <el-menu-item index="2-8">
+        <el-menu-item index="#2-8">
           K线数据
         </el-menu-item>
-        <el-menu-item index="2-9">
+        <el-menu-item index="#2-9">
           最新价格
         </el-menu-item>
       </el-sub-menu>
@@ -60,19 +60,19 @@
         <template #title>
           <span>Websocket 行情推送</span>
         </template>
-        <el-menu-item index="3-1">
+        <el-menu-item index="#3-1">
           实时订阅/取消数据流
         </el-menu-item>
-        <el-menu-item index="3-2">
+        <el-menu-item index="#3-2">
           最新价格
         </el-menu-item>
-        <el-menu-item index="3-3">
+        <el-menu-item index="#3-3">
           K线
         </el-menu-item>
-        <el-menu-item index="3-4">
+        <el-menu-item index="#3-4">
           有限档深度信息
         </el-menu-item>
-        <el-menu-item index="3-5">
+        <el-menu-item index="#3-5">
           增量深度信息
         </el-menu-item>
       </el-sub-menu>
@@ -80,31 +80,31 @@
         <template #title>
           <span>账户和交易接口</span>
         </template>
-        <el-menu-item index="4-1">
+        <el-menu-item index="#4-1">
           下单
         </el-menu-item>
-        <el-menu-item index="4-2">
+        <el-menu-item index="#4-2">
           批量下单
         </el-menu-item>
-        <el-menu-item index="4-3">
+        <el-menu-item index="#4-3">
           查询订单
         </el-menu-item>
-        <el-menu-item index="4-4">
+        <el-menu-item index="#4-4">
           撤销订单
         </el-menu-item>
-        <el-menu-item index="4-5">
+        <el-menu-item index="#4-5">
           撤销全部订单
         </el-menu-item>
-        <el-menu-item index="4-6">
+        <el-menu-item index="#4-6">
           批量撤销订单
         </el-menu-item>
-        <el-menu-item index="4-7">
+        <el-menu-item index="#4-7">
           查询当前挂单
         </el-menu-item>
-        <el-menu-item index="4-8">
+        <el-menu-item index="#4-8">
           查询所有订单
         </el-menu-item>
-        <el-menu-item index="4-9">
+        <el-menu-item index="#4-9">
           账户信息
         </el-menu-item>
       </el-sub-menu>
@@ -112,10 +112,10 @@
         <template #title>
           <span>Websocket 账户信息推送</span>
         </template>
-        <el-menu-item index="5-1">
+        <el-menu-item index="#5-1">
           订单/交易 更新推送
         </el-menu-item>
-        <el-menu-item index="5-2">
+        <el-menu-item index="#5-2">
           余额变动推送
         </el-menu-item>
       </el-sub-menu>
@@ -199,7 +199,8 @@
             调用这些接口时，除了接口本身所需的参数外，还需要传递<span class="light">sign</span>即签名参数。
           </li>
           <li>
-            签名使用<span class="light">HMAC SHA256</span>算法. API-KEY所对应的API-Secret作为 <span class="light">HMAC SHA256</span> 的密钥，其他所有参数作为<span class="light">HMAC SHA256</span>的操作对象，得到的输出即为签名。
+            签名使用<span class="light">HMAC SHA256</span>算法. API-KEY所对应的API-Secret作为 <span class="light">HMAC SHA256</span>
+            的密钥，其他所有参数作为<span class="light">HMAC SHA256</span>的操作对象，得到的输出即为签名。
           </li>
           <li>
             签名大小写不敏感。
@@ -208,6 +209,93 @@
             当同时使用query string和request body时，<span class="light">HMAC SHA256</span>的输入query string在前，request body在后
           </li>
         </ul>
+      </el-card>
+      <a class="title">
+        行情接口
+      </a>
+      <el-card id="2-1">
+        <div class="title-node">
+          测试服务器连通性
+        </div>
+        <p>
+          测试能否联通。
+        </p>
+        <p>
+          地址：
+          <code>
+            <pre>GET /v1/ping</pre>
+          </code>
+        </p>
+        <p>
+          入参：
+          <code>
+            <pre>无</pre>
+          </code>
+        </p>
+        <p>
+          出参：
+          <code>
+            <pre>{
+  "code": "0000",
+  "msg": null,
+  "data": "pong",
+  "success": true
+}</pre>
+          </code>
+        </p>
+      </el-card>
+      <el-card id="2-2">
+        <div class="title-node">
+          获取服务器时间
+        </div>
+        <p>
+          地址：
+          <code>
+            <pre>GET /v1/time</pre>
+          </code>
+        </p>
+        <p>
+          入参：
+          <code>
+            <pre>无</pre>
+          </code>
+        </p>
+        <p>
+          出参：
+          <code>
+            <pre>{
+  "code": "0000",
+  "msg": null,
+  "data": 1639903235341,
+  "success": true
+}</pre>
+          </code>
+        </p>
+      </el-card>
+      <el-card id="2-3">
+        <div class="title-node">
+          获取交易对
+        </div>
+        <p>
+          地址：
+          <code>
+            <pre>GET /v1/time</pre>
+          </code>
+        </p>
+        <p>
+          入参：
+          <code>
+            <pre>无</pre>
+          </code>
+        </p>
+        <p>
+          出参：
+          <code>
+            <pre>{
+  "serverTime": 1499827319559 // 当前的系统时间
+}</pre>
+          </code>
+        </p>
       </el-card>
     </div>
   </div>
@@ -253,12 +341,10 @@
 
   .main-content {
     width: calc(100% - 261px);
-    height: 0;
     float: left;
-    overflow: scroll;
     min-height: calc(100vh - 142px);
-    border-left: 1px solid var(--app-border-color);
     padding: 10px 20px;
+    border-left: 1px solid var(--app-border-color);
 
     .title {
       display: block;
@@ -272,10 +358,22 @@
     }
 
     .el-card {
-      margin-top: 20px;
+      margin-bottom: 20px;
 
       .light {
         color: var(--app-text-color-light)
+      }
+
+      code {
+        display: block;
+
+        pre {
+          display: inline-block;
+          background-color: var(--app-bg-color);
+          padding: 5px 10px;
+          border-radius: 4px;
+          color: var(--app-text-color-light);
+        }
       }
     }
 

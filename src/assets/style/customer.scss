@@ -6,6 +6,7 @@
   --app-text-color-dark: #828ea1;
   --app-text-color-light: #CCC;
   --app-text-color-white: #FFF;
+  --app-link-color: #357CE1;
   --app-border-color: #293448;
   --app-border-color-light: #dcdfe6;
 }
@@ -34,4 +35,8 @@ html {
 
 body {
   width: 100vw;
+}
+
+a:-webkit-any-link {
+  color: var(--app-link-color);
 }

@@ -1,0 +1,58 @@
+.title {
+  display: block;
+  font-size: 22px;
+  font-weight: bold;
+  line-height: 40px;
+  padding-bottom: 5px;
+  color: var(--app-text-color-light);
+  border-bottom: 1px solid var(--app-border-color);
+  margin-bottom: 15px;
+}
+
+.el-card {
+  margin-bottom: 20px;
+
+  .light {
+    color: var(--app-text-color-light)
+  }
+
+  code {
+    display: block;
+
+    pre {
+      background-color: var(--app-bg-color);
+      padding: 5px 10px;
+      border-radius: 4px;
+      color: var(--app-text-color-light);
+    }
+  }
+
+  .table {
+    margin-top: 3px;
+    border-collapse: collapse;
+    border: 1px solid var(--app-text-color);
+
+    tr {
+      border-bottom: 1px solid var(--app-text-color);
+    }
+
+    th {
+      border-collapse: collapse;
+      color: var(--app-text-color-light);
+      text-align: left;
+      padding: 5px 8px;
+      border-right: 1px solid var(--app-text-color);
+    }
+
+    td {
+      border-collapse: collapse;
+      padding: 5px 8px;
+      border-right: 1px solid var(--app-text-color);
+    }
+  }
+}
+
+.title-node {
+  font-size: 18px;
+  color: var(--app-text-color-light);
+}

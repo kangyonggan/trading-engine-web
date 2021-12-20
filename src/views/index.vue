@@ -21,12 +21,18 @@
           Rest基本信息
         </el-menu-item>
         <el-menu-item index="#1-3">
+          接口鉴权类型
+        </el-menu-item>
+        <el-menu-item index="#1-4">
           数据签名
+        </el-menu-item>
+        <el-menu-item index="#1-5">
+          枚举和错误码
         </el-menu-item>
       </el-sub-menu>
       <el-sub-menu index="2">
         <template #title>
-          <span>行情接口</span>
+          <span>公共行情接口</span>
         </template>
         <el-menu-item index="#2-1">
           测试服务器连通性
@@ -37,86 +43,57 @@
         <el-menu-item index="#2-3">
           获取交易对
         </el-menu-item>
-        <el-menu-item index="#2-4">
-          深度信息
-        </el-menu-item>
-        <el-menu-item index="#2-5">
-          近期成交
-        </el-menu-item>
-        <el-menu-item index="#2-6">
-          查询历史成交
-        </el-menu-item>
-        <el-menu-item index="#2-7">
-          近期成交(归集)
-        </el-menu-item>
-        <el-menu-item index="#2-8">
-          K线数据
-        </el-menu-item>
-        <el-menu-item index="#2-9">
-          最新价格
-        </el-menu-item>
       </el-sub-menu>
       <el-sub-menu index="3">
         <template #title>
-          <span>Websocket 行情推送</span>
+          <span>账户和交易接口</span>
         </template>
         <el-menu-item index="#3-1">
-          实时订阅/取消数据流
+          下单
         </el-menu-item>
         <el-menu-item index="#3-2">
-          最新价格
+          批量下单
         </el-menu-item>
         <el-menu-item index="#3-3">
-          K线
+          查询订单
         </el-menu-item>
         <el-menu-item index="#3-4">
-          有限档深度信息
+          撤销订单
         </el-menu-item>
         <el-menu-item index="#3-5">
-          增量深度信息
+          撤销全部订单
+        </el-menu-item>
+        <el-menu-item index="#3-6">
+          批量撤销订单
+        </el-menu-item>
+        <el-menu-item index="#3-7">
+          查询当前挂单
+        </el-menu-item>
+        <el-menu-item index="#3-8">
+          查询所有订单
+        </el-menu-item>
+        <el-menu-item index="#3-9">
+          账户信息
         </el-menu-item>
       </el-sub-menu>
       <el-sub-menu index="4">
         <template #title>
-          <span>账户和交易接口</span>
+          <span>Websocket推送</span>
         </template>
         <el-menu-item index="#4-1">
-          下单
+          实时订阅/取消数据流
         </el-menu-item>
         <el-menu-item index="#4-2">
-          批量下单
+          最新价格
         </el-menu-item>
         <el-menu-item index="#4-3">
-          查询订单
+          K线
         </el-menu-item>
         <el-menu-item index="#4-4">
-          撤销订单
+          有限档深度信息
         </el-menu-item>
         <el-menu-item index="#4-5">
-          撤销全部订单
-        </el-menu-item>
-        <el-menu-item index="#4-6">
-          批量撤销订单
-        </el-menu-item>
-        <el-menu-item index="#4-7">
-          查询当前挂单
-        </el-menu-item>
-        <el-menu-item index="#4-8">
-          查询所有订单
-        </el-menu-item>
-        <el-menu-item index="#4-9">
-          账户信息
-        </el-menu-item>
-      </el-sub-menu>
-      <el-sub-menu index="5">
-        <template #title>
-          <span>Websocket 账户信息推送</span>
-        </template>
-        <el-menu-item index="#5-1">
-          订单/交易 更新推送
-        </el-menu-item>
-        <el-menu-item index="#5-2">
-          余额变动推送
+          增量深度信息
         </el-menu-item>
       </el-sub-menu>
     </el-menu>
@@ -192,11 +169,32 @@
       </el-card>
       <el-card id="1-3">
         <div class="title-node">
+          接口鉴权类型
+        </div>
+        <ul>
+          <li>
+            NONE：不需要鉴权的接口
+          </li>
+          <li>
+            TRADE：需要有效的API-KEY和签名
+          </li>
+          <li>
+            USER_DATA：需要有效的API-KEY和签名
+          </li>
+        </ul>
+      </el-card>
+      <el-card id="1-4">
+        <div class="title-node">
           数据签名
         </div>
         <ul>
           <li>
-            调用这些接口时，除了接口本身所需的参数外，还需要传递<span class="light">sign</span>即签名参数。
+            调用鉴权类型为<span class="light">TRADE</span>和<span class="light">USER_DATA</span>接口时，除了接口本身所需的参数外，还需要传递<span
+              class="light"
+            >sign</span>即签名参数。
+          </li>
+          <li>
+            请求头中需要传递<span class="light">APIKEY</span>即API-KEY。
           </li>
           <li>
             签名使用<span class="light">HMAC SHA256</span>算法. API-KEY所对应的API-Secret作为 <span class="light">HMAC SHA256</span>
@@ -210,8 +208,55 @@
           </li>
         </ul>
       </el-card>
+      <el-card id="1-5">
+        <div class="title-node">
+          枚举和错误码
+        </div>
+
+        <div style="margin-top: 10px;color: var(--app-text-color-light)">
+          side - 买卖方向
+        </div>
+        <table
+          class="table"
+          style="width: 500px"
+        >
+          <tr>
+            <th>枚举值</th>
+            <th>说明</th>
+          </tr>
+          <tr>
+            <td>BUY</td>
+            <td>买入</td>
+          </tr>
+          <tr>
+            <td>SELL</td>
+            <td>卖出</td>
+          </tr>
+        </table>
+
+        <div style="margin-top: 10px;color: var(--app-text-color-light)">
+          type - 订单类型
+        </div>
+        <table
+          class="table"
+          style="width: 500px"
+        >
+          <tr>
+            <th>枚举值</th>
+            <th>说明</th>
+          </tr>
+          <tr>
+            <td>LIMIT</td>
+            <td>限价单</td>
+          </tr>
+          <tr>
+            <td>MARKET</td>
+            <td>市价单</td>
+          </tr>
+        </table>
+      </el-card>
       <a class="title">
-        行情接口
+        公共行情接口
       </a>
       <el-card id="2-1">
         <div class="title-node">
@@ -222,6 +267,12 @@
         </p>
         <ul>
           <li>GET /v1/ping</li>
+        </ul>
+        <p>
+          鉴权类型：
+        </p>
+        <ul>
+          <li>NONE</li>
         </ul>
         <p>
           入参：
@@ -252,6 +303,12 @@
           <li>GET /v1/time</li>
         </ul>
         <p>
+          鉴权类型：
+        </p>
+        <ul>
+          <li>NONE</li>
+        </ul>
+        <p>
           入参：
         </p>
         <ul>
@@ -280,6 +337,12 @@
           <li>GET /v1/symbol</li>
         </ul>
         <p>
+          鉴权类型：
+        </p>
+        <ul>
+          <li>NONE</li>
+        </ul>
+        <p>
           入参：
         </p>
         <ul>
@@ -299,92 +362,177 @@
           <li>rose（BigDecimal）：24小时涨跌幅</li>
         </ul>
         <code>
-          <pre>xxx
-xxx</pre>
+          <pre>{
+  "code": "0000",
+  "msg": null,
+  "data": [
+    {
+      "symbol": "BTCUSDT",
+      "takerFeeRate": 0.000200000000,
+      "makerFeeRate": 0.000400000000,
+      "priceScale": 4,
+      "quantityScale": 8,
+      "sort": 0,
+      "price": 57685.4156,
+      "rose": -0.0256
+    }
+  ],
+  "success": true
+}</pre>
         </code>
+      </el-card>
+      <a class="title">
+        账户和交易接口
+      </a>
+      <el-card id="3-1">
+        <div class="title-node">
+          下单
+        </div>
+        <p>
+          地址：
+        </p>
+        <ul>
+          <li>POST /v1/order</li>
+        </ul>
+        <p>
+          鉴权类型：
+        </p>
+        <ul>
+          <li>TRADE</li>
+        </ul>
+        <p>
+          入参：
+        </p>
+        <ul>
+          <li>symbol（String）：交易对</li>
+          <li>clientOrderNo（String）：客户端订单号</li>
+          <li>side（Enum）：买卖方向</li>
+          <li>type（Enum）：订单类型</li>
+          <li>price（BigDecimal）：委托价格</li>
+          <li>quantity（BigDecimal）：数量</li>
+        </ul>
+        <p>
+          出参：
+          <code>
+            <pre>{
+  "code": "0000",
+  "msg": null,
+  "data": {
+    "clientOrderNo": "1639973816490",
+    "orderId": 1472782862146707457,
+    "status": "NEW"
+  },
+  "success": true
+}</pre>
+          </code>
+        </p>
       </el-card>
     </div>
   </div>
 </template>
 
 <script>
-  export default {
-    data() {
-      return {
-        defaultActive: '',
-      }
-    },
-    methods: {
-      jump(id) {
-        let section = document.getElementById(id)
-        if (section) {
-          section.scrollIntoView()
-        }
-      }
-    },
-    mounted() {
-      this.defaultActive = this.$route.hash
-      let defaultOpen = this.$route.hash.split('-')[0].replace('#', '')
-      if (!defaultOpen) {
-        defaultOpen = '1'
-      }
-      this.$refs.menu.open([defaultOpen])
-      this.jump(this.$route.hash.replace('#', ''))
-    },
-    watch: {
-      '$route'(newRoute) {
-        this.jump(newRoute.hash.replace('#', ''))
+export default {
+  data() {
+    return {
+      defaultActive: '',
+    }
+  },
+  methods: {
+    jump(id) {
+      let section = document.getElementById(id)
+      if (section) {
+        section.scrollIntoView()
       }
     }
+  },
+  mounted() {
+    this.defaultActive = this.$route.hash
+    let defaultOpen = this.$route.hash.split('-')[0].replace('#', '')
+    if (!defaultOpen) {
+      defaultOpen = '1'
+    }
+    this.$refs.menu.open([defaultOpen])
+    this.jump(this.$route.hash.replace('#', ''))
+  },
+  watch: {
+    '$route'(newRoute) {
+      this.jump(newRoute.hash.replace('#', ''))
+    }
   }
+}
 </script>
 
 <style scoped lang="scss">
-  .side-bar {
-    width: 220px;
-    float: left;
+.side-bar {
+  width: 220px;
+  float: left;
+}
+
+.main-content {
+  width: calc(100% - 261px);
+  float: left;
+  min-height: calc(100vh - 142px);
+  padding: 10px 20px;
+  border-left: 1px solid var(--app-border-color);
+
+  .title {
+    display: block;
+    font-size: 22px;
+    font-weight: bold;
+    line-height: 40px;
+    padding-bottom: 5px;
+    color: var(--app-text-color-light);
+    border-bottom: 1px solid var(--app-border-color);
+    margin-bottom: 15px;
   }
 
-  .main-content {
-    width: calc(100% - 261px);
-    float: left;
-    min-height: calc(100vh - 142px);
-    padding: 10px 20px;
-    border-left: 1px solid var(--app-border-color);
+  .el-card {
+    margin-bottom: 20px;
 
-    .title {
+    .light {
+      color: var(--app-text-color-light)
+    }
+
+    code {
       display: block;
-      font-size: 22px;
-      font-weight: bold;
-      line-height: 40px;
-      padding-bottom: 5px;
-      color: var(--app-text-color-light);
-      border-bottom: 1px solid var(--app-border-color);
-      margin-bottom: 15px;
-    }
 
-    .el-card {
-      margin-bottom: 20px;
-
-      .light {
-        color: var(--app-text-color-light)
-      }
-
-      code {
-        display: block;
-
-        pre {
-          background-color: var(--app-bg-color);
-          padding: 5px 10px;
-          border-radius: 4px;
-          color: var(--app-text-color-light);
-        }
+      pre {
+        background-color: var(--app-bg-color);
+        padding: 5px 10px;
+        border-radius: 4px;
+        color: var(--app-text-color-light);
       }
     }
 
-    .title-node {
-      font-size: 18px;
-      color: var(--app-text-color-light);
+    .table {
+      margin-top: 3px;
+      border-collapse: collapse;
+      border: 1px solid var(--app-text-color);
+
+      tr {
+        border-bottom: 1px solid var(--app-text-color);
+      }
+
+      th {
+        border-collapse: collapse;
+        color: var(--app-text-color-light);
+        text-align: left;
+        padding: 5px 8px;
+        border-right: 1px solid var(--app-text-color);
+      }
+
+      td {
+        border-collapse: collapse;
+        padding: 5px 8px;
+        border-right: 1px solid var(--app-text-color);
+      }
     }
   }
+
+  .title-node {
+    font-size: 18px;
+    color: var(--app-text-color-light);
+  }
+}
 </style>

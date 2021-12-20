@@ -17,7 +17,11 @@ axios.interceptors.request.use(function (config) {
     if (!config.url.includes('?')) {
       config.url = config.url + '?'
     }
-    config.url = config.url + '&' + qs.stringify(config.data)
+    if (config.url.endsWith('?')) {
+      config.url = config.url + qs.stringify(config.data)
+    } else {
+      config.url = config.url + '&' + qs.stringify(config.data)
+    }
   }
 
   return config

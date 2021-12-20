@@ -65,14 +65,14 @@
     </div>
     <el-table
       v-loading="loading"
-      :data="permissions"
+      :data="apis"
     >
       <el-table-column
         label="Api Key"
         prop="apiKey"
       >
         <template #default="scope">
-          {{ scope.row.apiKey.substring(0, 4) }}****{{ scope.row.apiKey.substring(59, 63) }}
+          {{ scope.row.pubKey.substring(0, 4) }}****{{ scope.row.pubKey.substring(59, 63) }}
           <el-icon
             style="cursor: pointer;color: var(--el-color-primary);font-size: 16px;"
             @click="copy('copy-apiKey-' + scope.row.id)"
@@ -82,7 +82,7 @@
           <input
             style="position: absolute;left: -99999px;top:0;"
             :id="'copy-apiKey-' + scope.row.id"
-            :value="scope.row.apiKey"
+            :value="scope.row.pubKey"
           >
         </template>
       </el-table-column>
@@ -92,7 +92,7 @@
       >
         <template #default="scope">
           <div v-if="!secretKeyMap[scope.row.id]">
-            {{ scope.row.secretKey }}
+            {{ scope.row.priKey }}
             <el-icon
               style="cursor: pointer;color: var(--el-color-primary);font-size: 16px;"
               @click="showSecretKey(scope.row.id)"
@@ -114,14 +114,6 @@
               :value="secretKeyMap[scope.row.id]"
             >
           </div>
-        </template>
-      </el-table-column>
-      <el-table-column
-        label="IP白名单"
-        prop="whiteList"
-      >
-        <template #default="scope">
-          {{ scope.row.whiteList || '无' }}
         </template>
       </el-table-column>
       <el-table-column
@@ -163,7 +155,7 @@
 
     <edit-api
       ref="edit-api"
-      @success="loadPermissions"
+      @success="loadApis"
     />
 
     <show-secret
@@ -192,7 +184,7 @@ export default {
           {required: true, message: '请输入标签'}
         ],
       },
-      permissions: [],
+      apis: [],
       apiKey: '',
       secretKey: '',
       secretKeyMap: {}
@@ -215,15 +207,15 @@ export default {
       this.$refs['show-secret'].show(id)
     },
     showSecretKeySuccess(data) {
-      this.secretKeyMap[data.id] = data.secretKey
+      this.secretKeyMap[data.id] = data.priKey
     },
     /**
      * 创建Api成功
      */
     success(data) {
-      this.apiKey = data.apiKey
-      this.secretKey = data.secretKey
-      this.loadPermissions()
+      this.apiKey = data.pubKey
+      this.secretKey = data.priKey
+      this.loadApis()
       this.$success('API创建成功')
       this.$refs.form.resetFields()
     },
@@ -237,8 +229,8 @@ export default {
         type: 'warning'
       }).then(() => {
         this.loading = true
-        this.axios.delete('/v1/user/permission?id=' + row.id).finally(() => {
-          this.loadPermissions()
+        this.axios.delete('/v1/user/api?id=' + row.id).finally(() => {
+          this.loadApis()
         }).catch(res => {
           this.$error(res.msg)
         }).finally(() => {
@@ -266,10 +258,10 @@ export default {
     /**
      * 加载Api列表
      */
-    loadPermissions() {
+    loadApis() {
       this.loading = true
-      this.axios.get('/v1/user/permission').then(data => {
-        this.permissions = data
+      this.axios.get('/v1/user/api').then(data => {
+        this.apis = data
       }).catch(res => {
         this.$error(res.msg)
       }).finally(() => {
@@ -278,7 +270,7 @@ export default {
     }
   },
   activated() {
-    this.loadPermissions()
+    this.loadApis()
   }
 }
 </script>

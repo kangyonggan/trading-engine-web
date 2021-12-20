@@ -2,7 +2,7 @@
   <base-modal
     ref="modal"
     title="安全验证"
-    url="/v1/user/permission"
+    url="/v1/user/api"
     :params="params"
     :rules="rules"
     @success="$emit('success', $event)"

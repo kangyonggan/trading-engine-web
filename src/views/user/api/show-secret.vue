@@ -2,7 +2,7 @@
   <base-modal
     ref="modal"
     title="安全验证"
-    :url="'/v1/user/permission/' + id"
+    :url="'/v1/user/api/' + id"
     method="GET"
     :params="params"
     :rules="rules"

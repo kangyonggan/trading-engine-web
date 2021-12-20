@@ -254,6 +254,39 @@
             <td>市价单</td>
           </tr>
         </table>
+
+        <div style="margin-top: 10px;color: var(--app-text-color-light)">
+          status - 订单状态
+        </div>
+        <table
+          class="table"
+          style="width: 500px"
+        >
+          <tr>
+            <th>枚举值</th>
+            <th>说明</th>
+          </tr>
+          <tr>
+            <td>NEW</td>
+            <td>新订单</td>
+          </tr>
+          <tr>
+            <td>PARTIALLY_FILLED</td>
+            <td>部分成交</td>
+          </tr>
+          <tr>
+            <td>FILLED</td>
+            <td>完全成交</td>
+          </tr>
+          <tr>
+            <td>FAILURE</td>
+            <td>成交失败</td>
+          </tr>
+          <tr>
+            <td>CANCELED</td>
+            <td>已撤销</td>
+          </tr>
+        </table>
       </el-card>
       <a class="title">
         公共行情接口
@@ -411,10 +444,26 @@
           <li>price（BigDecimal）：委托价格</li>
           <li>quantity（BigDecimal）：数量</li>
         </ul>
+        <code>
+          <pre>{
+  "symbol": "BTCUSDT",
+  "clientOrderNo": "1639973816490",
+  "side": "BUY",
+  "type": "LIMIT",
+  "price": 50000,
+  "quantity": 0.01
+}</pre>
+        </code>
         <p>
           出参：
-          <code>
-            <pre>{
+        </p>
+        <ul>
+          <li>clientOrderNo（String）：客户端订单号</li>
+          <li>orderId（Long）：订单ID</li>
+          <li>status（Enum）：状态</li>
+        </ul>
+        <code>
+          <pre>{
   "code": "0000",
   "msg": null,
   "data": {
@@ -424,8 +473,7 @@
   },
   "success": true
 }</pre>
-          </code>
-        </p>
+        </code>
       </el-card>
     </div>
   </div>

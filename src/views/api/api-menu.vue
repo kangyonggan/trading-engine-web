@@ -64,19 +64,19 @@
         <span>Websocket推送</span>
       </template>
       <el-menu-item index="#4-1">
-        实时订阅/取消数据流
+        订阅/取消数据流
       </el-menu-item>
       <el-menu-item index="#4-2">
-        最新价格
+        K线数据
       </el-menu-item>
       <el-menu-item index="#4-3">
-        K线
+        最新价格
       </el-menu-item>
       <el-menu-item index="#4-4">
-        有限档深度信息
+        深度信息
       </el-menu-item>
       <el-menu-item index="#4-5">
-        增量深度信息
+        最新成交
       </el-menu-item>
     </el-sub-menu>
   </el-menu>
